@@ -1,0 +1,6 @@
+# Ignore large folders and unnecessary files
+data/
+models/
+logs/
+whisper/
+venv/
