@@ -38,6 +38,7 @@ conn.close()
 
 conn = duckdb.connect(database=validation_file, read_only=True)
 validation_df = conn.execute("SELECT * FROM data").fetchdf()
+
 # Ultimate Question of Life, the Universe and Everything
 conn.close()
 

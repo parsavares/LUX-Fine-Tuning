@@ -2,5 +2,9 @@
 data/
 models/
 logs/
-whisper/
+whisper-lux/
 venv/
+preprocessed_test/
+preprocessed_train/
+preprocessed_validation/
+whisper/
