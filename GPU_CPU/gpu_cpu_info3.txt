@@ -1,0 +1,6 @@
+Is CUDA available? False
+Number of GPUs: 0
+Number of CPU cores: 112
+CPU Frequency: 3795.70 MHz
+Total RAM: 3022.36 GB
+Available RAM: 2855.78 GB

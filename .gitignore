@@ -8,3 +8,4 @@ preprocessed_test/
 preprocessed_train/
 preprocessed_validation/
 whisper/
+whisper-lux-final/

@@ -1,0 +1,99 @@
+Loading datasets...
+Inspecting the structure of 'audio' column in training data...
+0    {'bytes': b'RIFF$E\x01\x00WAVEfmt \x10\x00\x00...
+1    {'bytes': b'RIFF$~\x04\x00WAVEfmt \x10\x00\x00...
+2    {'bytes': b'RIFF$\x11\x03\x00WAVEfmt \x10\x00\...
+3    {'bytes': b'RIFF$\x99\x02\x00WAVEfmt \x10\x00\...
+4    {'bytes': b'RIFF\xe44\x06\x00WAVEfmt \x10\x00\...
+Name: audio, dtype: object
+
+=== Step 1: Checking for Missing or Null Values ===
+Missing values in Train Dataset:
+audio                   0
+Unnamed: 0              0
+transcription           0
+audio.duration          0
+transcription.length    0
+__hf_index_id           0
+dtype: int64
+Missing values in Validation Dataset:
+audio                   0
+Unnamed: 0              0
+transcription           0
+audio.duration          0
+transcription.length    0
+__hf_index_id           0
+dtype: int64
+Missing values in Test Dataset:
+audio                   0
+Unnamed: 0              0
+transcription           0
+audio.duration          0
+transcription.length    0
+__hf_index_id           0
+dtype: int64
+
+=== Step 2: Checking Audio Data Quality ===
+Warning: Audio file at index 445 in training data is too short (0.77 seconds)
+Warning: Audio file at index 628 in training data is too short (0.92 seconds)
+Warning: Audio file at index 642 in training data is too short (0.76 seconds)
+Warning: Audio file at index 1092 in training data is too short (0.76 seconds)
+Warning: Audio file at index 1169 in training data is too short (0.64 seconds)
+Warning: Audio file at index 1193 in training data is too short (0.85 seconds)
+Warning: Audio file at index 1502 in training data is too short (0.89 seconds)
+Warning: Audio file at index 1512 in training data is too short (0.76 seconds)
+Warning: Audio file at index 1889 in training data is too short (0.57 seconds)
+Warning: Audio file at index 1941 in training data is too short (0.73 seconds)
+Warning: Audio file at index 2175 in training data is too short (0.93 seconds)
+Warning: Audio file at index 2325 in training data is too short (0.91 seconds)
+Warning: Audio file at index 2485 in training data is too short (0.83 seconds)
+Warning: Audio file at index 2600 in training data is too short (0.70 seconds)
+Warning: Audio file at index 2637 in training data is too short (0.93 seconds)
+Warning: Audio file at index 2997 in training data is too short (0.80 seconds)
+Warning: Audio file at index 3032 in training data is too short (0.64 seconds)
+Warning: Audio file at index 3034 in training data is too short (0.80 seconds)
+Warning: Audio file at index 3371 in training data is too short (0.85 seconds)
+Warning: Audio file at index 3736 in training data is too short (0.92 seconds)
+Warning: Audio file at index 3769 in training data is too short (0.96 seconds)
+Warning: Audio file at index 4436 in training data is too short (0.99 seconds)
+Warning: Audio file at index 4439 in training data is too short (0.84 seconds)
+Warning: Audio file at index 5655 in training data is too short (0.84 seconds)
+Warning: Audio file at index 5961 in training data is too short (0.80 seconds)
+Warning: Audio file at index 6067 in training data is too short (0.94 seconds)
+Warning: Audio file at index 6069 in training data is too short (0.84 seconds)
+Warning: Audio file at index 6071 in training data is too short (0.36 seconds)
+Warning: Audio file at index 6352 in training data is too short (0.96 seconds)
+Warning: Audio file at index 6359 in training data is too short (0.84 seconds)
+Warning: Audio file at index 6397 in training data is too short (0.86 seconds)
+Warning: Audio file at index 6437 in training data is too short (0.98 seconds)
+Warning: Audio file at index 6573 in training data is too short (0.91 seconds)
+Warning: Audio file at index 6707 in training data is too short (0.96 seconds)
+Warning: Audio file at index 6975 in training data is too short (0.80 seconds)
+Warning: Audio file at index 7059 in training data is too short (0.76 seconds)
+Warning: Audio file at index 7158 in training data is too short (0.08 seconds)
+Warning: Audio file at index 7506 in training data is too short (0.85 seconds)
+Warning: Audio file at index 7536 in training data is too short (0.98 seconds)
+Warning: Audio file at index 8732 in training data is too short (0.44 seconds)
+Warning: Audio file at index 9444 in training data is too short (0.58 seconds)
+Warning: Audio file at index 10163 in training data is too short (0.48 seconds)
+Warning: Audio file at index 10494 in training data is too short (0.87 seconds)
+Warning: Audio file at index 11053 in training data is too short (0.94 seconds)
+Warning: Audio file at index 11147 in training data is too short (0.92 seconds)
+Warning: Audio file at index 12774 in training data is too short (0.70 seconds)
+Warning: Audio file at index 16129 in training data is too short (0.95 seconds)
+Warning: Audio file at index 16855 in training data is too short (0.96 seconds)
+Warning: Audio file at index 16888 in training data is too short (0.96 seconds)
+Warning: Audio file at index 19040 in training data is too short (0.84 seconds)
+Warning: Audio file at index 19292 in training data is too short (0.91 seconds)
+Warning: Audio file at index 21903 in training data is too short (0.84 seconds)
+Warning: Audio file at index 78 in validation data is too short (0.92 seconds)
+Warning: Audio file at index 355 in validation data is too short (0.83 seconds)
+Warning: Audio file at index 959 in validation data is too short (0.96 seconds)
+
+=== Step 3: Checking for Duplicate Rows ===
+Duplicate rows in training dataset: 0
+Duplicate rows in validation dataset: 0
+Duplicate rows in test dataset: 0
+No duplicates found in training dataset.
+No duplicates found in validation dataset.
+No duplicates found in test dataset.

@@ -8,7 +8,7 @@ output_dir = "GPU_CPU"
 os.makedirs(output_dir, exist_ok=True)
 
 # File to save the output
-output_file = os.path.join(output_dir, "gpu_cpu_info.txt")
+output_file = os.path.join(output_dir, "gpu_cpu_info_2GPU.txt")
 
 # Open the file to write the output
 with open(output_file, "w") as f:
