@@ -1,0 +1,3 @@
+Total duration of train dataset: 39.38 hours 
+Total duration of test dataset: 0.41 hours 
+Total duration of validation dataset: 2.11 hours 
