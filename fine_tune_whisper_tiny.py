@@ -79,7 +79,7 @@ class TrainingVisualizationCallback(TrainerCallback):
         plt.close()
 
 # Add the callback to the trainer
-visualization_callback = TrainingVisualizationCallback(output_dir="./whisper-lux-visuals")
+visualization_callback = TrainingVisualizationCallback(output_dir="./tiny/whisper-lux-visuals")
 
 
 # === Step 2: Load the DuckDB datasets or preprocessed datasets ===
@@ -313,9 +313,9 @@ print(f"Available RAM: {psutil.virtual_memory().available / 1024 ** 3:.2f} GB")
 
 # === Step 5: Set up the training arguments ===
 training_args = Seq2SeqTrainingArguments(
-    output_dir="./whisper-lux",              # Output directory for logs and model checkpoints
-    save_steps=2000,                         # Save model every 500 steps for frequent checkpointing
-    save_total_limit=3,                      # Keep up to 5 checkpoints to avoid space issues
+    output_dir="./tiny/whisper-lux",              # Output directory for logs and model checkpoints
+    save_steps=1000,                         # Save model every 500 steps for frequent checkpointing
+    save_total_limit=5,                      # Keep up to 5 checkpoints to avoid space issues
     per_device_train_batch_size=4,           # Use a larger batch size (increase as much as your GPU allows)
     per_device_eval_batch_size=8,            # Keep eval batch size larger for faster evaluation
     gradient_accumulation_steps=1,           # Reduce or remove gradient accumulation for more frequent updates
@@ -325,21 +325,21 @@ training_args = Seq2SeqTrainingArguments(
     gradient_checkpointing=True,             # Keep gradient checkpointing to save memory
     fp16=False,                              # Use full precision (`fp32`) for maximum quality
     eval_strategy="steps",                   # Evaluate periodically by steps
-    eval_steps=500,                          # Frequent evaluation (every 500 steps)
+    eval_steps=1000,                          # Frequent evaluation (every 500 steps)
     predict_with_generate=True,              # For seq2seq tasks, generate predictions during evaluation
     generation_max_length=367,               # Set max length for predictions (based on dataset)
                                              #=> Maximum token length in the training dataset: 347 +20 => 367 (/home/users/pvares/paper/find_max_length.py)
     logging_steps=50,                        # Log every 25 steps for detailed tracking
-    weight_decay=0.02,                       # Adding weight decay to regularize large weights
+    weight_decay=0.01,                       # Adding weight decay to regularize large weights
     report_to=["tensorboard"],               # Log to TensorBoard for visualization
     load_best_model_at_end=True,             # Always load the best model based on evaluation metric
     metric_for_best_model="wer",             # Track Word Error Rate (WER) for best model selection
     greater_is_better=False,                 # Lower WER is better
     push_to_hub=False,                       # Disable model push to Hugging Face hub
     dataloader_num_workers=6,                # Use multiple workers for data loading to speed up the process
-    lr_scheduler_type="cosine_with_restarts",# Use cosine learning rate scheduler for better learning rate decay
+    lr_scheduler_type="cosine",# Use cosine learning rate scheduler for better learning rate decay
     seed=42,                                 # Ensure reproducibility with a fixed random seed
-    logging_dir="./logs",                    # Directory for logging
+    logging_dir="./tiny/logs",                    # Directory for logging
     disable_tqdm=False,                      # Keep the progress bar for interactive monitoring
     remove_unused_columns=False              # Keep all columns for flexibility in data processing
 )
@@ -422,12 +422,12 @@ trainer = Seq2SeqTrainer(
     eval_dataset=validation_dataset,
     data_collator=data_collator,
     compute_metrics=compute_metrics,
-    callbacks=[visualization_callback, EarlyStoppingCallback(early_stopping_patience=10, early_stopping_threshold=0.001)]  # Include early stopping
+    callbacks=[visualization_callback, EarlyStoppingCallback(early_stopping_patience=15, early_stopping_threshold=0.0005)]  # Include early stopping
 )
 
 # === Step 8: Start (or resume) training the model ===
 print("Starting the training.")
-#trainer.train(resume_from_checkpoint="./whisper-lux/checkpoint-5000")
+#trainer.train(resume_from_checkpoint="./tiny/whisper-lux/checkpoint-5000")
 trainer.train()
 
 # === Step 9: Evaluate the model ===
@@ -437,7 +437,7 @@ eval_results = trainer.evaluate()
 print(f"Evaluation Results: {eval_results}")
 
 # === Step 10: Save the trained model and processor ===
-model.save_pretrained("./whisper-lux-final")
-processor.save_pretrained("./whisper-lux-final")
+model.save_pretrained("./tiny/whisper-lux-final")
+processor.save_pretrained("./tiny/whisper-lux-final")
 # Save the generation configuration explicitly
-model.generation_config.save_pretrained("./whisper-lux-final")
+model.generation_config.save_pretrained("./tiny/whisper-lux-final")
