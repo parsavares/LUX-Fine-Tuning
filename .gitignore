@@ -1,5 +1,7 @@
 # Ignore large folders and unnecessary files
-data/
+data/test.duckdb/
+data/train.duckdb/
+data/validation.duckdb/
 models/
 whisper-lux/
 venv/
