@@ -79,7 +79,7 @@ class TrainingVisualizationCallback(TrainerCallback):
         plt.close()
 
 # Add the callback to the trainer
-visualization_callback = TrainingVisualizationCallback(output_dir="./tiny/whisper-lux-visuals")
+visualization_callback = TrainingVisualizationCallback(output_dir="./base/whisper-lux-visuals")
 
 
 # === Step 2: Load the DuckDB datasets or preprocessed datasets ===
@@ -93,10 +93,10 @@ preprocessed_val_path = "./preprocessed_validation"
 preprocessed_test_path = "./preprocessed_test"
 
 # Load Whisper tokenizer with updated special tokens
-tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-tiny", use_fast=False)
+tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-base", use_fast=False)
 
 # Reinitialize the processor using the updated tokenizer
-processor = WhisperProcessor(tokenizer=tokenizer, feature_extractor=WhisperProcessor.from_pretrained("openai/whisper-tiny").feature_extractor)
+processor = WhisperProcessor(tokenizer=tokenizer, feature_extractor=WhisperProcessor.from_pretrained("openai/whisper-base").feature_extractor)
 
 # Check if preprocessed datasets exist
 if os.path.exists(preprocessed_train_path) and os.path.exists(preprocessed_val_path) and os.path.exists(preprocessed_test_path):
@@ -200,7 +200,7 @@ optimize memory usage during training.
 '''
 
 # Load the Whisper model
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-tiny")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base")
 
 # Set the language and task to Luxembourgish speech-to-text transcription
 model.generation_config.language = "luxembourgish"
@@ -313,7 +313,7 @@ print(f"Available RAM: {psutil.virtual_memory().available / 1024 ** 3:.2f} GB")
 
 # === Step 5: Set up the training arguments ===
 training_args = Seq2SeqTrainingArguments(
-    output_dir="./tiny/whisper-lux",              # Output directory for logs and model checkpoints
+    output_dir="./base/whisper-lux",              # Output directory for logs and model checkpoints
     save_steps=1000,                         # Save model every 500 steps for frequent checkpointing
     save_total_limit=5,                      # Keep up to 5 checkpoints to avoid space issues
     per_device_train_batch_size=4,           # Use a larger batch size (increase as much as your GPU allows)
@@ -339,7 +339,7 @@ training_args = Seq2SeqTrainingArguments(
     dataloader_num_workers=6,                # Use multiple workers for data loading to speed up the process
     lr_scheduler_type="cosine",# Use cosine learning rate scheduler for better learning rate decay
     seed=42,                                 # Ensure reproducibility with a fixed random seed
-    logging_dir="./tiny/logs",                    # Directory for logging
+    logging_dir="./base/logs",                    # Directory for logging
     disable_tqdm=False,                      # Keep the progress bar for interactive monitoring
     remove_unused_columns=False              # Keep all columns for flexibility in data processing
 )
@@ -427,7 +427,7 @@ trainer = Seq2SeqTrainer(
 
 # === Step 8: Start (or resume) training the model ===
 print("Starting the training.")
-#trainer.train(resume_from_checkpoint="./tiny/whisper-lux/checkpoint-5000")
+#trainer.train(resume_from_checkpoint="./base/whisper-lux/checkpoint-5000")
 trainer.train()
 
 # === Step 9: Evaluate the model ===
@@ -437,7 +437,7 @@ eval_results = trainer.evaluate()
 print(f"Evaluation Results: {eval_results}")
 
 # === Step 10: Save the trained model and processor ===
-model.save_pretrained("./tiny/whisper-lux-final")
-processor.save_pretrained("./tiny/whisper-lux-final")
+model.save_pretrained("./base/whisper-lux-final")
+processor.save_pretrained("./base/whisper-lux-final")
 # Save the generation configuration explicitly
-model.generation_config.save_pretrained("./tiny/whisper-lux-final")
+model.generation_config.save_pretrained("./base/whisper-lux-final")
