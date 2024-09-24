@@ -1,0 +1,1 @@
+Evaluation Results: {'eval_loss': 0.06537050753831863, 'eval_wer': 0.464858825919155, 'eval_ground_truths_wer': 0.39829389661825937, 'eval_runtime': 201.4118, 'eval_samples_per_second': 5.923, 'eval_steps_per_second': 0.745, 'epoch': 3.571428571428571}
