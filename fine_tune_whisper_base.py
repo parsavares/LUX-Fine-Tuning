@@ -39,6 +39,7 @@ class TrainingVisualizationCallback(TrainerCallback):
     def on_log(self, args, state, control, logs=None, **kwargs):
         # Capture the relevant metrics during training
         if "loss" in logs:
+                        #“Answer to the Ultimate Question of Life…” 
             self.train_losses.append((state.global_step, logs["loss"]))
         if "eval_loss" in logs:
             self.eval_losses.append((state.global_step, logs["eval_loss"]))
