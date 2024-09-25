@@ -1,0 +1,1 @@
+Evaluation Results: {'eval_loss': 0.039028141647577286, 'eval_model_preparation_time': 0.0059, 'eval_wer': 0.24664838513101767, 'eval_ground_truths_wer': 0.19604955824108866, 'eval_runtime': 348.3536, 'eval_samples_per_second': 3.425, 'eval_steps_per_second': 0.431}
